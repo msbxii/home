@@ -24,8 +24,12 @@ set mouse=a
 	set ttyfast
 	set ruler
 	set laststatus=2
-	set relativenumber
-	set undofile 
+	" Vim 7.3 specific options { 
+	if version >= 730
+		set relativenumber
+		set undofile 
+	endif
+	" }
 " }
 
 " Searching {
@@ -46,7 +50,12 @@ set mouse=a
 	set wrap
 	set textwidth=79
 	set formatoptions=qrn1
-	set colorcolumn=81
+	" Vim 7.3 specific options {
+	if version >= 730
+		set colorcolumn=81
+	endif
+	" }
+
 	" let screen lines 
 	nnoremap j gj
 	nnoremap k gk
