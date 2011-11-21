@@ -7,6 +7,7 @@
 	ci = commit
 	au = add -u
 	co = checkout
+	ca = commit -am
 
 [core]
 	editor =vim

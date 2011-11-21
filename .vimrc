@@ -24,12 +24,8 @@ set mouse=a
 	set ttyfast
 	set ruler
 	set laststatus=2
-	" Vim 7.3 specific options { 
-	if version >= 730
-		set relativenumber
-		set undofile 
-	endif
-	" }
+	set relativenumber
+	set undofile 
 " }
 
 " Searching {
@@ -50,9 +46,7 @@ set mouse=a
 	set wrap
 	set textwidth=79
 	set formatoptions=qrn1
-	if version > 730
-		set colorcolumn=81
-	endif
+	set colorcolumn=81
 	" let screen lines 
 	nnoremap j gj
 	nnoremap k gk
@@ -76,11 +70,17 @@ set mouse=a
 
 " }
 
+" Session saving {
+	nmap SQ <ESC>:mksession! .vimsession<CR>:wqa<CR>
+	function! RestoreSession()
+		if argc() == 0 "vim called without arguments
+			execute 'source .vimsession'
+		end
+	endfunction
+
+	autocmd VimEnter * call RestoreSession()
+	" Woo let's see if this works!
+" }
 
 
- if exists("g:btm_rainbow_color") && g:btm_rainbow_color
-    call rainbow_parenthsis#LoadSquare ()
-    call rainbow_parenthsis#LoadRound ()
-    call rainbow_parenthsis#Activate ()
- endif
 
