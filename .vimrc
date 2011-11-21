@@ -75,7 +75,6 @@ let mapleader = ","
 	nnoremap <F1> <ESC>
 	vnoremap <F1> <ESC>
 	inoremap jj <ESC>
-	vnoremap jj <ESC>
 
 	" Window movement {
 		inoremap <C-h> <C-w>h
@@ -90,8 +89,10 @@ let mapleader = ","
 " Session saving {
 	nmap SQ <ESC>:mksession! .vimsession<CR>:wqa<CR>
 	function! RestoreSession()
-		if argc() == 0 "vim called without arguments
-			execute 'source .vimsession'
+		if filereadable('.vimsession')
+			if argc() == 0 "vim called without arguments
+				execute 'source .vimsession'
+			end
 		end
 	endfunction
 
