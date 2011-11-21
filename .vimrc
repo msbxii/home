@@ -8,6 +8,7 @@ syntax on
 
 set modelines=0
 set mouse=a
+let mapleader = ","
 
 
 " General environment things {
@@ -25,7 +26,7 @@ set mouse=a
 	set ruler
 	set laststatus=2
 	" Vim 7.3 specific options { 
-	if version >= 730
+	if version >= 703
 		set relativenumber
 		set undofile 
 	endif
@@ -51,7 +52,7 @@ set mouse=a
 	set textwidth=79
 	set formatoptions=qrn1
 	" Vim 7.3 specific options {
-	if version >= 730
+	if version >= 703
 		set colorcolumn=81
 	endif
 	" }
@@ -67,7 +68,6 @@ set mouse=a
 	nnoremap <C-y> 3<C-y>
 	nnoremap <leader>w :w<cr>
 	nnoremap <leader>q ZZ
-	let mapleader = ","
 " }
 
 " Custom remaps {
@@ -76,6 +76,14 @@ set mouse=a
 	vnoremap <F1> <ESC>
 	inoremap jj <ESC>
 	vnoremap jj <ESC>
+
+	" Window movement {
+		inoremap <C-h> <C-w>h
+		inoremap <C-j> <C-w>j
+		inoremap <C-k> <C-w>k
+		inoremap <C-l> <C-w>l
+	" }
+
 
 " }
 
