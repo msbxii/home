@@ -1,0 +1,12 @@
+[user]
+	name = msbxii
+	email = msbxii@case.edu
+
+[alias]
+	st = status
+	ci = commit
+	au = add -u
+	co = checkout
+
+[core]
+	editor =vim
