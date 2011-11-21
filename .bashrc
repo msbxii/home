@@ -81,6 +81,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias lla='ls -la'
 alias calen='~/calendar/calendar'
 alias todo='~/todo/todo'
 alias truecryptu='truecrypt --fs-options="uid=1000,gid=1000,umask=0002"'
