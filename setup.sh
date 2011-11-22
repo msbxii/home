@@ -27,3 +27,8 @@ git init
 git remote add pub git://github.com/msbxii/home.git
 git pull pub master
 rm -rf .git
+
+echo "Would you like to se your shell to zsh?"
+read -p "Install zsh (y/n): "
+
+[ "$REPLY" == "y" ] && chsh -s zsh
