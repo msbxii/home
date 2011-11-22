@@ -23,7 +23,6 @@ __need zsh
 
 cd $HOME
 
-echo helloo!
 read -p 'Install zsh (y/n): ' 'REPLY'
 [ "$REPLY" = "y" ] && chsh -s zsh
 
