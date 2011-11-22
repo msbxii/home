@@ -23,7 +23,7 @@ __need zsh
 
 cd $HOME
 
-chsh -s zsh
+sudo chsh -s zsh
 
 git init
 git remote add pub git://github.com/msbxii/home.git
