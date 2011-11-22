@@ -76,11 +76,13 @@ let mapleader = ","
 	vnoremap <F1> <ESC>
 	inoremap jj <ESC>
 
-	" Window movement {
+	" Movement {
 		inoremap <C-h> <C-w>h
 		inoremap <C-j> <C-w>j
 		inoremap <C-k> <C-w>k
 		inoremap <C-l> <C-w>l
+		nnoremap H ^
+
 	" }
 
 
