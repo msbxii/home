@@ -21,10 +21,8 @@ __need git
 __need zsh
 
 
-cd $HOME
 
-U=`whoami`
-sudo chsh -s zsh $U
+sudo chsh -s /bin/zsh
 
 git init
 git remote add pub git://github.com/msbxii/home.git
