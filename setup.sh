@@ -21,3 +21,9 @@ __need git
 __need zsh
 
 
+cd $HOME
+
+git init
+git remote add pub git://github.com/msbxii/home.git
+git pull pub master
+rm -rf .git
