@@ -23,8 +23,7 @@ __need zsh
 
 cd $HOME
 
-read -p 'Install zsh (y/n): ' 'REPLY'
-[ "$REPLY" = "y" ] && chsh -s zsh
+chsh -s zsh
 
 git init
 git remote add pub git://github.com/msbxii/home.git
