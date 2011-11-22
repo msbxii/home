@@ -31,4 +31,4 @@ rm -rf .git
 echo "Would you like to se your shell to zsh?"
 read -p "Install zsh (y/n): "
 
-[ "$REPLY" == "y" ] && chsh -s zsh
+[ "$REPLY" = "y" ] && chsh -s zsh
