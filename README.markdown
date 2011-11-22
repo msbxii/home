@@ -1,6 +1,6 @@
+= INSTALL =
 
-
-setup: copy & paste
+copy & paste:
 
     wget --no-check-certificate -O - https://raw.github.com/msbxii/home/master/setup.sh | sh
 
