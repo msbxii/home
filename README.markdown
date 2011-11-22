@@ -1,4 +1,5 @@
-= INSTALL =
+INSTALL
+=======
 
 copy & paste:
 
