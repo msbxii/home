@@ -22,6 +22,7 @@ __need zsh
 
 
 cd $HOME
+
 read -p "Install zsh (y/n): " REPLY
 [ "$REPLY" = "y" ] && chsh -s zsh
 
