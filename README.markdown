@@ -2,6 +2,7 @@ msbxii's home config script
 ===========================
 
 This repository contains my
+
      .bashrc
      .vimrc
      .zshrc
