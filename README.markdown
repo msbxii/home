@@ -3,11 +3,10 @@ INSTALL
 
 copy & paste:
 
-    wget --no-check-certificate -O - https://raw.github.com/msbxii/home/master/setup.sh | sh
+    wget -O - https://raw.github.com/msbxii/home/master/setup.sh | bash
 
 
-then change your shell to `zsh`	with
+then if you want, change your shell to `zsh` with
     
     chsh -s zsh
 
-if you want.

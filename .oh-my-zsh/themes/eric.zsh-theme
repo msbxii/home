@@ -1,4 +1,4 @@
-USER_HOST="%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%}"
+USER_HOST="%{$fg_bold[magenta]%}%n%{$reset_color%} at %{$fg_bold[yellow]%}%m%{$reset_color%}"
 
 function collapse_pwd {
 	echo $(pwd | sed -e "s,^$HOME,~,")
