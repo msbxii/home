@@ -32,7 +32,7 @@ done
 
 read -p 'Would you like to add a remote push for the home repository? [y/n] ' RESP
 
-if [ "$RESP" == "y" ]; then
+if [ "$RESP" = "y" ]; then
 	cd home
 	git remote rm origin
 	git remote add origin https://msbxii@github.com/msbxii/home.git
