@@ -8,12 +8,12 @@ EDITOR=vim
 # time that oh-my-zsh is loaded.
 ZSH_THEME="eric"
 
-function etheme {
+etheme() {
 	TF="$ZSH/themes/$ZSH_THEME.zsh-theme"
 	vim $TF
 }
 
-function loadtheme {
+loadtheme() {
 	TF="$ZSH/themes/$ZSH_THEME.zsh-theme"
 	. $TF
 }
