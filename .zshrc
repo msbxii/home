@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+EDITOR=vim
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -33,7 +34,11 @@ CASE_SENSITIVE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git github command_not_found)
+
+if [ -e /etc/debian_version ]; then
+	pugins+=debian
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,4 +49,11 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/ga
 # Alases { 
 	alias la='ls -a'
 	alias lla='ls -la'
+
+	alias ezrc="$EDITOR ~/.zshrc"
+	alias evrc="$EDITOR ~/.vimrc"
 # }
+
+
+echo "$fg[green]zsh:$reset_color"
+
