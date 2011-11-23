@@ -53,11 +53,11 @@ let mapleader = ","
 	set formatoptions=qrn1
 	" Vim 7.3 specific options {
 	if version >= 703
-		set colorcolumn=81
+		" set colorcolumn=81
 	endif
 	" }
 
-	" let screen lines 
+	" let you navigate screen lines rather than system lines
 	nnoremap j gj
 	nnoremap k gk
 " }
