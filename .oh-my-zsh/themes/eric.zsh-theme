@@ -40,6 +40,6 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 # vim style key bindings! my life is complete!
 bindkey -v
-bindkey -rpM viins '\e'
+# bindkey -rpM viins '\e'
 
 # vim: set filetype=sh :
