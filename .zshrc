@@ -57,6 +57,9 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/ga
 	alias evrc="$EDITOR ~/.vimrc"
 # }
 
+gpm() {
+	gcd && git push
+}
 
 # bindkey -v
 
