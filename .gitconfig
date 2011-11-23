@@ -8,7 +8,6 @@
 	au = add -u
 	co = checkout
 	ca = commit -am
-	cd = commit -am 'updated '!date
 
 [core]
 	editor =vim

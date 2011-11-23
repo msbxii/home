@@ -50,6 +50,9 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/ga
 	alias la='ls -a'
 	alias lla='ls -la'
 
+	# Git
+	alias gcd='git commit -a -m "updated $(date)"'
+
 	alias ezrc="$EDITOR ~/.zshrc"
 	alias evrc="$EDITOR ~/.vimrc"
 # }
