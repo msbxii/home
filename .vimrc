@@ -10,7 +10,6 @@ set modelines=0
 set mouse=a
 let mapleader = ","
 
-
 " General environment things {
 	set backspace=indent,eol,start
 	set encoding=utf-8
@@ -85,7 +84,7 @@ let mapleader = ","
 
 	" }
 
-
+	nnoremap <leader>rp :RainbowParenthesesToggle<cr>
 " }
 
 " Session saving {
