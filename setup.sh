@@ -22,9 +22,14 @@ __need zsh
 
 
 
+cd
 
-git init
-git remote add pub git://github.com/msbxii/home.git
-git pull pub master
+git clone git://github.com/msbxii/home.git
+
+for i in `find home -name '.*' -maxdepth 1`
+do
+	ln -s $i
+done
+
 rm -rf .git
 
