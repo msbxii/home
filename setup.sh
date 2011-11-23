@@ -1,6 +1,6 @@
 #!/bin/bash
 
-progs_to_install=git zsh
+progs_to_install=( git zsh )
 
 __install() {
 	hash 'apt-get' && echo 'I need administrator priveliges to install '\
@@ -16,7 +16,7 @@ __need() {
 	__install "$1"
 }
 
-for i in $progs_to_install
+for i in "${progs_to_install[@]}"
 do
 	__need $i
 done
