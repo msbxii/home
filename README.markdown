@@ -2,11 +2,11 @@ msbxii's home config script
 ===========================
 
 This repository contains my
-    + .bashrc
-    + .vimrc
-    + .zshrc
-    + .dircolors
-    + .vim/
+* .bashrc
+* .vimrc
+* .zshrc
+* .dircolors
+* .vim/
 
 and an installer for them.
 
