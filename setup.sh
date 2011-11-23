@@ -1,6 +1,6 @@
 #!/bin/bash
 
-progs_to_install=(git zsh)
+progs_to_install=git zsh
 
 __install() {
 	hash 'apt-get' && echo 'I need administrator priveliges to install '\
