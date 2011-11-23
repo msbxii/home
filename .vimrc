@@ -63,8 +63,8 @@ let mapleader = ","
 
 " Convenience {
 	nnoremap ; :
-	nnoremap <C-e> 3<C-e>
-	nnoremap <C-y> 3<C-y>
+	nnoremap <C-e> 5<C-e>
+	nnoremap <C-y> 5<C-y>
 	nnoremap <leader>w :w<cr>
 	nnoremap <leader>q ZZ
 " }
@@ -76,10 +76,10 @@ let mapleader = ","
 	inoremap jj <ESC>
 
 	" Movement {
-		inoremap <C-h> <C-w>h
-		inoremap <C-j> <C-w>j
-		inoremap <C-k> <C-w>k
-		inoremap <C-l> <C-w>l
+		nnoremap <C-h> <C-w><C-h>
+		nnoremap <C-j> <C-w><C-j>
+		nnoremap <C-k> <C-w><C-k>
+		nnoremap <C-l> <C-w><C-l>
 		nnoremap H ^
 
 	" }
