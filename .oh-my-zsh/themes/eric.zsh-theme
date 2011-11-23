@@ -29,7 +29,8 @@ case $(whoami) in
 ;;
 esac
 
-PROMPT="$PROMPT
+PROMPT="
+$PROMPT
 ${PCHAR_COLOR}"'$(prompt_char)$END '
 
 ZSH_THEME_GIT_PROMPT_PREFIX="on %{$fg[magenta]%}"
