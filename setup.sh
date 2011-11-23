@@ -31,15 +31,6 @@ CONFIG_GIT_REPO=.home_config_repo
 git clone git://github.com/msbxii/home.git $CONFIG_GIT_REPO
 
 
-#############################
-# make symlinks to dotfiles #
-#############################
-for i in `find $CONFIG_GIT_REPO -name '.*' -maxdepth 1 -mindepth 1`
-	#{{
-do
-	ln -s $i
-done 
-# }}
 
 rm -rf .git
 
@@ -54,3 +45,14 @@ if [ "$RESP" = "y" ] || [ x"$RESP" = x ]; then
 	cd
 	echo 'There you go.'
 fi
+
+echo 'Making symlinks'
+#############################
+# make symlinks to dotfiles #
+#############################
+#{{
+for i in `find $CONFIG_GIT_REPO -name '.*' -maxdepth 1 -mindepth 1`
+do
+	ln -s $i
+done 
+# }}
