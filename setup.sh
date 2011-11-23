@@ -24,7 +24,6 @@ done
 
 cd
 
-<<<<<<< HEAD
 CONFIG_GIT_REPO=.home_config_repo
 ############################
 # grab stuff from the repo #
