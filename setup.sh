@@ -20,20 +20,23 @@ __need zsh
 
 cd
 
-git clone git://github.com/msbxii/home.git
+CONFIG_GIT_REPO=.home_config_repo
+git clone git://github.com/msbxii/home.git $CONFIG_GIT_REPO
 
 
-for i in `find home -name '.*' -maxdepth 1`
+for i in `find $CONFIG_GIT_REPO -name '.*' -maxdepth 1`
 	#{{
 do
 	ln -s $i
 done 
 # }}
 
+echo "Home config repository initialized in $CONFIG_GIT_REPO."
+
 read -p 'Would you like to add a remote push for the home repository? [y/n] ' RESP
 
 if [ "$RESP" = "y" ]; then
-	cd home
+	cd $CONFIG_GIT_REPO
 	git remote rm origin
 	git remote add origin https://msbxii@github.com/msbxii/home.git
 	cd
