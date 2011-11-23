@@ -61,5 +61,13 @@ gpm() {
 	gcd && git push
 }
 
+gpw() {
+	if [ x"$1" = x ]; then
+		echo 'Please supply a commit message' && return 1
+	fi
+	git ca \'$1\'
+	git push
+}
+
 # bindkey -v
 
