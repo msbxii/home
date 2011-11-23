@@ -15,21 +15,27 @@ __need () {
 	__install "$1"
 }
 
-
-
 __need git
 __need zsh
-
-
 
 cd
 
 git clone git://github.com/msbxii/home.git
 
+
 for i in `find home -name '.*' -maxdepth 1`
+	#{{
 do
 	ln -s $i
-done
+done 
+# }}
 
-rm -rf .git
+read -p 'Would you like to add a remote push for the home repository? [y/n] ' RESP
 
+if [ "$RESP" == "y" ]; then
+	cd home
+	git remote rm origin
+	git remote add origin https://msbxii@github.com/msbxii/home.git
+	cd
+	echo 'There you go.'
+fi
