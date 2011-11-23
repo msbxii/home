@@ -37,7 +37,7 @@ CASE_SENSITIVE="true"
 plugins=(git github command_not_found)
 
 if [ -e /etc/debian_version ]; then
-	pugins+=debian
+	plugins+=debian
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -55,5 +55,4 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/ga
 # }
 
 
-echo "$fg[green]zsh:$reset_color"
 
