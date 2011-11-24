@@ -1,6 +1,7 @@
 filetype off
 call pathogen#runtime_append_all_bundles()
 
+filetype plugin on
 filetype plugin indent on
 
 set nocompatible
@@ -82,6 +83,12 @@ let mapleader = ","
 	vnoremap <F1> <ESC>
 	inoremap jj <ESC>
 	
+	" generate good tags database
+	map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+	" auto-close preview window from omnicpp
+	autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+	autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+	
 	" low contrast for low light
 	nnoremap <leader>lc :colorscheme zenburn<cr>
 
@@ -131,17 +138,17 @@ let mapleader = ","
 " Boxes {
 	function! Makebox(line1, line2, override)
 		let design = 'shell'
-		if &filetype == 'c'|| &filetype == 'cpp'
+		if a:override != ''
+			let design = a:override
+		elseif &filetype == 'c'|| &filetype == 'cpp'
 			let design = &filetype
 		elseif &filetype == 'vim'
 			let design = 'vim-cmt'
 		endif
-		if a:override != ''
-			let design = a:override
-		endif
+
 		exec ':' . a:line1 . ',' . a:line2 . '!boxes -d ' . design 
-	endfunction                                                               
-									   
+	endfunction
+		
 	command -range -nargs=0 Box  call Makebox(<line1>, <line2>, '')
 	command -range -nargs=0 SexyBox call Makebox(<line1>, <line2>, 'peek')
 	vnoremap ,b :Box<cr>
