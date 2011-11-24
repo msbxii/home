@@ -83,8 +83,13 @@ let mapleader = ","
 		nnoremap H ^
 
 	" }
+	"
 
 	nnoremap <leader>rp :RainbowParenthesesToggle<cr>
+" }
+
+" Tagbar {
+	nnoremap <F8> :TagbarToggle<CR>
 " }
 
 " Session saving {
