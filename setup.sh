@@ -3,8 +3,9 @@
 
 
 progs_to_install=( git zsh )
+progs_to_maybe_install=( boxes )
 
-__install() {
+__n_install() {
 	hash 'apt-get' && echo 'I need administrator priveliges to install '\
 		"$1" && sudo apt-get install "$1" && return
 	hash 'yum' && echo 'I need administrator priveliges to install '\
@@ -15,7 +16,11 @@ __install() {
 }
 __need() {
 	hash "$1" && echo "$1 is installed... " && return
-	__install "$1"
+	__n_install "$1"
+}
+__want() {
+	hash "$1" && echo "$1 is installed"  && return
+	( __n_install "$1" > /dev/null )
 }
 
 if [ "$1" = vim ]; then
@@ -55,20 +60,16 @@ CONFIG_GIT_REPO=.home_config_repo
 ############################
 git clone git://github.com/msbxii/home.git $CONFIG_GIT_REPO
 
-
-
-rm -rf .git
-
 echo "Home config repository initialized in $CONFIG_GIT_REPO."
 
 read -p 'Would you like to add a remote push for the home repository? [y/n] ' RESP
 
 if [ "$RESP" = "y" ] || [ x"$RESP" = x ]; then
-	cd $CONFIG_GIT_REPO
+	( cd $CONFIG_GIT_REPO
 	git remote rm origin
 	git remote add origin https://msbxii@github.com/msbxii/home.git
-	cd
 	echo 'There you go.'
+	)
 fi
 
 echo 'Making symlinks'
@@ -76,7 +77,7 @@ echo 'Making symlinks'
 # make symlinks to dotfiles #
 #############################
 #{{
-for i in `find $CONFIG_GIT_REPO -name '.*' -maxdepth 1 -mindepth 1`
+for i in `find $CONFIG_GIT_REPO -name -maxdepth 1 -mindepth 1 '.*'`
 do
 	ln -s $i
 done 
