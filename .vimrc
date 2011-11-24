@@ -64,7 +64,7 @@ let mapleader = ","
 " Appearance {
 	set t_Co=256
 	set background=dark
-	colorscheme murphy
+	colorscheme pablo
 " }
 
 " Convenience {
@@ -95,6 +95,16 @@ let mapleader = ","
 	"
 
 	nnoremap <leader>rp :RainbowParenthesesToggle<cr>
+
+	" make a line of equals signs from the current line
+	nnoremap <leader>el yypv$r=
+
+	" make a line of asterisk from the current line
+	nnoremap <leader>al yypv$r*
+
+	" make a box comment around the current paragraph
+	" Damn this mapping is legit. Clobbers mark `m' though
+	nnoremap <leader>bc yy{pv$r*r/mm}Pv$r*$r/k^<c-v>`mjI*<space><esc>
 " }
 
 " Tagbar {
