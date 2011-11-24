@@ -61,6 +61,12 @@ let mapleader = ","
 	nnoremap k gk
 " }
 
+" Appearance {
+	set t_Co=256
+	set background=dark
+	colorscheme murphy
+" }
+
 " Convenience {
 	nnoremap ; :
 	nnoremap <C-e> 5<C-e>
@@ -74,6 +80,9 @@ let mapleader = ","
 	nnoremap <F1> <ESC>
 	vnoremap <F1> <ESC>
 	inoremap jj <ESC>
+	
+	" low contrast for low light
+	nnoremap <leader>lc :colorscheme zenburn<cr>
 
 	" Movement {
 		nnoremap <C-h> <C-w><C-h>
