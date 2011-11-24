@@ -66,7 +66,7 @@ let mapleader = ","
 	set t_Co=256
 	set background=dark
 	colorscheme peaksea
-	set scrolloff=6
+	set scrolloff=5
 " }
 
 " Convenience {
@@ -75,7 +75,11 @@ let mapleader = ","
 	nnoremap <C-y> 5<C-y>
 	nnoremap <leader>w :w<cr>
 	nnoremap <leader>q ZZ
+	inoremap <c-a> <esc>I
+	inoremap <c-e> <esc>A
 " }
+" Open a Quickfix window for the last search.
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Custom remaps {
 	inoremap <F1> <ESC>
