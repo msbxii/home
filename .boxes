@@ -46,7 +46,7 @@ padding {
 
 elastic (n,e,s,w)
 
-END c
+END cpp
 
 
 # ============================================================================
@@ -1496,13 +1496,20 @@ ends
 
 shapes {
      w ("\"")
+     e ("\"")
+     n ("\"")
+     s ("\"")
+     nw ("\"")
+     ne ("\"")
+     sw ("\"")
+     se ("\"")
 }
 
 padding {
-    left 1
+    horiz 1
 }
 
-elastic ( w )
+elastic ( w, e, n, s )
 
 END vim-cmt
 

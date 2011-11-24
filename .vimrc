@@ -64,7 +64,8 @@ let mapleader = ","
 " Appearance {
 	set t_Co=256
 	set background=dark
-	colorscheme pablo
+	colorscheme peaksea
+	set scrolloff=6
 " }
 
 " Convenience {
@@ -105,6 +106,8 @@ let mapleader = ","
 	" make a box comment around the current paragraph
 	" Damn this mapping is legit. Clobbers mark `m' though
 	nnoremap <leader>bc yy{pv$r*r/mm}Pv$r*$r/k^<c-v>`mjI*<space><esc>
+
+	inoremap <leader><leader> <esc>
 " }
 
 " Tagbar {
@@ -125,5 +128,22 @@ let mapleader = ","
 	" Woo let's see if this works!
 " }
 
-
-
+" Boxes {
+	function! Makebox(line1, line2, override)
+		let design = 'shell'
+		if &filetype == 'c'|| &filetype == 'cpp'
+			let design = &filetype
+		elseif &filetype == 'vim'
+			let design = 'vim-cmt'
+		endif
+		if a:override != ''
+			let design = a:override
+		endif
+		exec ':' . a:line1 . ',' . a:line2 . '!boxes -d ' . design 
+	endfunction                                                               
+									   
+	command -range -nargs=0 Box  call Makebox(<line1>, <line2>, '')
+	command -range -nargs=0 SexyBox call Makebox(<line1>, <line2>, 'peek')
+	vnoremap ,b :Box<cr>
+	vnoremap ,sexy :SexyBox<cr>
+" }

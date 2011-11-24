@@ -5,6 +5,14 @@
 progs_to_install=( git zsh )
 progs_to_maybe_install=( boxes )
 
+__w_install() {
+	hash 'apt-get' && echo 'I need administrator priveliges to install '\
+		"$1" && sudo apt-get install "$1" && return
+	hash 'yum' && echo 'I need administrator priveliges to install '\
+		"$1" && sudo yum install "$1" & return
+	echo "I can't auto-install $1- Please install it on your own."
+}
+
 __n_install() {
 	hash 'apt-get' && echo 'I need administrator priveliges to install '\
 		"$1" && sudo apt-get install "$1" && return
@@ -15,12 +23,12 @@ __n_install() {
 	exit
 }
 __need() {
-	hash "$1" && echo "$1 is installed... " && return
+	hash "$1" > /dev/null 2>/dev/null && echo "$1 is installed... " && return
 	__n_install "$1"
 }
 __want() {
-	hash "$1" && echo "$1 is installed"  && return
-	( __n_install "$1" > /dev/null )
+	hash "$1" > /dev/null 2>/dev/null && echo "$1 is installed"  && return
+	__w_install "$1"
 }
 
 if [ "$1" = vim ]; then
@@ -50,6 +58,10 @@ for i in "${progs_to_install[@]}"
 do
 	__need $i
 done
+for i in "${progs_to_maybe_install[@]}"
+do
+	__want $i
+done
           
 
 cd
@@ -77,8 +89,10 @@ echo 'Making symlinks'
 # make symlinks to dotfiles #
 #############################
 #{{
-for i in `find $CONFIG_GIT_REPO -name -maxdepth 1 -mindepth 1 '.*'`
+for i in `find $CONFIG_GIT_REPO -maxdepth 1 -mindepth 1 -name '.*'`
 do
 	ln -s $i
 done 
 # }}
+
+rm -rf .git
