@@ -23,10 +23,17 @@ if [ "$1" = vim ]; then
 	if [ "$ANS" = y ]; then
 		__need hg
 		cd
-		mkdir sources
+		if [ ! -d sources ]; then
+			mkdir sources
+		fi
 		cd sources
+		if [ -d vim ]; then
+			rm -rf vim
+		fi
+		echo "entering `pwd`"
 		hg clone https://vim.googlecode.com/hg/ vim
 		cd vim
+		echo "entering `pwd`"
 		./configure --enable-multibyte
 		make
 		sudo make install
