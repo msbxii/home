@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 progs_to_install=( git zsh )
 
 __install() {
@@ -15,6 +17,22 @@ __need() {
 	hash "$1" && echo "$1 is installed... " && return
 	__install "$1"
 }
+
+if [ "$1" = vim ]; then
+	read -p 'fetch/compile/install vim? [y/n]: ' ANS
+	if [ "$ANS" = y ]; then
+		__need hg
+		cd
+		mkdir sources
+		cd sources
+		hg clone https://vim.googlecode.com/hg/ vim
+		cd vim
+		./configure --enable-multibyte
+		make
+		sudo make install
+	fi
+	exit
+fi
 
 for i in "${progs_to_install[@]}"
 do
