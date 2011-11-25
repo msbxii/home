@@ -18,7 +18,12 @@ function prompt_char {
 	echo '$'
 }
 
-PROMPT='$USER_HOST in $(color_pwd) $(git_prompt_info)'
+git_ahead() {
+	git branch > /dev/null 2>/dev/null || return
+	git status | grep 'ahead of origin' && echo "%{$fg_bold[magenta]%}[ahead]%{$reset_color%}"
+}
+
+PROMPT='$USER_HOST in $(color_pwd) $(git_prompt_info) $(git_ahead)'
 
 case $(whoami) in
 	root) 
