@@ -15,7 +15,7 @@ etheme() {
 
 loadtheme() {
 	TF="$ZSH/themes/$ZSH_THEME.zsh-theme"
-	. $TF
+	source $TF
 }
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
