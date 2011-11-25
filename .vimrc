@@ -43,7 +43,7 @@ let mapleader = ","
 	set showmatch
 	set hlsearch
 	nnoremap <leader><space> :noh<cr>
-	nnoremap <tab> %
+	" nnoremap <tab> %
 	vnoremap <tab> %
 " }
 
@@ -65,8 +65,28 @@ let mapleader = ","
 " Appearance {
 	set t_Co=256
 	set background=dark
-	colorscheme peaksea
+	let defaultcolorscheme= 'peaksea'
+	exec ':colorscheme ' . defaultcolorscheme
 	set scrolloff=5
+
+	" todo: add a high-contrast theme
+	let colorschemestate = 1
+	function! ToggleColorscheme()
+		if g:colorschemestate == 0
+			set background=dark
+			exec ':colorscheme ' . g:defaultcolorscheme
+			let g:colorschemestate = 1
+		elseif g:colorschemestate == 1
+			exec ':colorscheme zenburn'
+			let g:colorschemestate = 0
+		endif
+	endfunc
+
+	" switch between low contrast and medium contrast
+	nnoremap <leader>co :call ToggleColorscheme()<cr>
+	
+	" low contrast for low light
+	nnoremap <leader>lc :colorscheme zenburn<cr>:let g:colorschemestate=0<cr>
 " }
 
 " Convenience {
@@ -92,9 +112,7 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 	" auto-close preview window from omnicpp
 	autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 	autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-	
-	" low contrast for low light
-	nnoremap <leader>lc :colorscheme zenburn<cr>
+
 
 	" Movement {
 		nnoremap <C-h> <C-w><C-h>
@@ -127,20 +145,20 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Session saving {
 	nmap SQ <ESC>:mksession! .vimsession<CR>:wqa<CR>
-	function! RestoreSession()
+	func! RestoreSession()
 		if filereadable('.vimsession')
 			if argc() == 0 "vim called without arguments
 				execute 'source .vimsession'
-			end
-		end
-	endfunction
+			endif 
+		endif 
+	endfunc
 
 	autocmd VimEnter * call RestoreSession()
 	" Woo let's see if this works!
 " }
 
 " Boxes {
-	function! Makebox(line1, line2, override)
+	func! Makebox(line1, line2, override)
 		let design = 'shell'
 		if a:override != ''
 			let design = a:override
@@ -155,6 +173,39 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 		
 	command -range -nargs=0 Box  call Makebox(<line1>, <line2>, '')
 	command -range -nargs=0 SexyBox call Makebox(<line1>, <line2>, 'peek')
-	vnoremap ,b :Box<cr>
-	vnoremap ,sexy :SexyBox<cr>
+	vnoremap <leader>b :Box<cr>
+	vnoremap <leader>sexy :SexyBox<cr>
+" }
+"
+"
+" Status line { 
+
+augroup ft_statuslinecolor
+    au!
+
+    au InsertEnter * hi StatusLine ctermfg=196 guifg=#FF3145
+    au InsertLeave * hi StatusLine ctermfg=130 guifg=#CD5907
+augroup END
+
+set statusline=%f    " Path.
+set statusline+=%m   " Modified flag.
+set statusline+=%r   " Readonly flag.
+set statusline+=%w   " Preview window flag.
+
+set statusline+=\    " Space.
+
+set statusline+=%=   " Right align.
+
+" File format, encoding and type.  Ex: "(unix/utf-8/python)"
+set statusline+=(
+set statusline+=%{&ff}                        " Format (unix/DOS).
+set statusline+=/
+set statusline+=%{strlen(&fenc)?&fenc:&enc}   " Encoding (utf-8).
+set statusline+=/
+set statusline+=%{&ft}                        " Type (python).
+set statusline+=)
+
+" Line and column position and counts.
+set statusline+=\ (line\ %l\/%L,\ col\ %03c%03V)
+
 " }

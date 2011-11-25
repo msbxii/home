@@ -1,4 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =3
 let g:netrw_dirhist_1='/home/eric'
 let g:netrw_dirhist_2='/home/eric/.git'
+let g:netrw_dirhist_3='/home/eric/.home_config_repo/.vim/bundle/rainbow_parentheses/autoload'

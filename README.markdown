@@ -17,7 +17,7 @@ auto-install
 
 copy & paste:
 
-    wget -O - https://raw.github.com/msbxii/home/master/setup.sh | bash
+    wget -O - http://git.io/mhsetup | bash
 
 then if you want, change your shell to `zsh` with
     

@@ -20,9 +20,9 @@ if !exists('g:rbpt_colorpairs')
 				\ ['Darkblue',    'firebrick3'],
 				\ ['darkgreen',   'RoyalBlue3'],
 				\ ['darkcyan',    'SeaGreen3'],
-				\ ['darkred',     'DarkOrchid3'],
 				\ ['red',         'firebrick3'],
 				\ ]
+				" \ ['darkred',     'DarkOrchid3'],
 else
 	let s:colorpairs = g:rbpt_colorpairs
 	unl g:rbpt_colorpairs
@@ -64,6 +64,7 @@ endfunc
 func! rainbow_parentheses#toggle()
 	if !exists('s:active')
 		cal rainbow_parentheses#load(0)
+		cal rainbow_parentheses#load(2)
 	endif
 	if exists('s:active') && s:active
 		cal rainbow_parentheses#clear()
