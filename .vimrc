@@ -66,6 +66,8 @@ let mapleader = ","
 	set t_Co=256
 	set background=dark
 	let defaultcolorscheme= 'peaksea'
+	let colorscheme_alt1='zenburn'
+	let colorscheme_alt2='wombat'
 	exec ':colorscheme ' . defaultcolorscheme
 	set scrolloff=5
 
@@ -77,23 +79,32 @@ let mapleader = ","
 			exec ':colorscheme ' . g:defaultcolorscheme
 			let g:colorschemestate = 1
 		elseif g:colorschemestate == 1
-			exec ':colorscheme zenburn'
+			exec ':colorscheme ' . g:colorscheme_alt1
+			let g:colorschemestate = 2
+		elseif g:colorschemestate == 2
+			exec ':colorscheme ' . g:colorscheme_alt2
 			let g:colorschemestate = 0
 		endif
 	endfunc
 
-	" switch between low contrast and medium contrast
+	" switch between low [co]ntrast and medium contrast
 	nnoremap <leader>co :call ToggleColorscheme()<cr>
 	
-	" low contrast for low light
-	nnoremap <leader>lc :colorscheme zenburn<cr>:let g:colorschemestate=0<cr>
+	" [l]ow [c]ontrast for low light
+	nnoremap <leader>lc :colorscheme zenburn<cr>:let g:colorschemestate=2<cr>
+	" [h]igh [c]ontrast for other situations
+	nnoremap <leader>hc :colorscheme wombat<cr>:let g:colorschemestate=0<cr>
+	" [m]edium [c]ontrast, default.
+	nnoremap <leader>mc :colorscheme peaksea<cr>:let g:colorschemestate=1<cr>
 " }
 
 " Convenience {
 	nnoremap ; :
 	nnoremap <C-e> 5<C-e>
 	nnoremap <C-y> 5<C-y>
+	" [w]rite
 	nnoremap <leader>w :w<cr>
+	" [q]uit
 	nnoremap <leader>q ZZ
 	inoremap <c-a> <esc>I
 	inoremap <c-e> <esc>A
@@ -124,15 +135,16 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 	" }
 	"
 
+	" [R]ainbow[P]arentheses binding
 	nnoremap <leader>rp :RainbowParenthesesToggle<cr>
 
-	" make a line of equals signs from the current line
-	nnoremap <leader>el yypv$r=
+	" make a [l]ine of [e]cquals signs from the current line
+	nnoremap <leader>le yypv$r=
 
-	" make a line of asterisk from the current line
-	nnoremap <leader>al yypv$r*
+	" make a [l]ine of [a]sterisk from the current line
+	nnoremap <leader>la yypv$r*
 
-	" make a box comment around the current paragraph
+	" make a [b]ox [c]omment around the current paragraph
 	" Damn this mapping is legit. Clobbers mark `m' though
 	nnoremap <leader>bc yy{pv$r*r/mm}Pv$r*$r/k^<c-v>`mjI*<space><esc>
 
@@ -176,16 +188,23 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 	vnoremap <leader>b :Box<cr>
 	vnoremap <leader>sexy :SexyBox<cr>
 " }
-"
-"
-" Status line { 
 
-augroup ft_statuslinecolor
-    au!
 
-    au InsertEnter * hi StatusLine ctermfg=196 guifg=#FF3145
-    au InsertLeave * hi StatusLine ctermfg=130 guifg=#CD5907
-augroup END
+" I suck at typing {{
+	vnoremap K k
+	vnoremap J j 
+" }}
+
+
+" Status line {{{
+
+" todo: something cool here
+"augroup ft_statuslinecolor
+    "au!
+
+    "au InsertEnter * hi StatusLine ctermfg=196 guifg=#FFa1aa
+    "au InsertLeave * hi StatusLine ctermfg=0 guifg=#CD5907
+"augroup END
 
 set statusline=%f    " Path.
 set statusline+=%m   " Modified flag.
@@ -208,4 +227,4 @@ set statusline+=)
 " Line and column position and counts.
 set statusline+=\ (line\ %l\/%L,\ col\ %03c%03V)
 
-" }
+" }}}
