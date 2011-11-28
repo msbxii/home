@@ -99,4 +99,5 @@ do
 done 
 # }}
 
-rm .git
+rm .git* -f
+ln -s $CONFIG_GIT_REPO/.gitconfig
