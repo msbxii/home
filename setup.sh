@@ -70,7 +70,7 @@ CONFIG_GIT_REPO=.home_config_repo
 ############################
 # grab stuff from the repo #
 ############################
-git clone git://github.com/msbxii/home.git $CONFIG_GIT_REPO
+git clone --recursive git://github.com/msbxii/home.git $CONFIG_GIT_REPO
 
 echo "Home config repository initialized in $CONFIG_GIT_REPO."
 
