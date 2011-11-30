@@ -74,16 +74,6 @@ git clone --recursive git://github.com/msbxii/home.git $CONFIG_GIT_REPO
 
 echo "Home config repository initialized in $CONFIG_GIT_REPO."
 
-read -p 'Would you like to add a remote push for the home repository? [y/n] ' RESP
-
-if [ "$RESP" = "y" ] || [ x"$RESP" = x ]; then
-	cd $CONFIG_GIT_REPO
-	git remote rm origin
-	git remote add origin https://msbxii@github.com/msbxii/home.git
-	echo 'There you go.'
-	cd
-fi
-
 echo 'Making symlinks'
 #############################
 # make symlinks to dotfiles #
