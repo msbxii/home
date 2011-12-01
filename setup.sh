@@ -83,7 +83,7 @@ for i in `find $CONFIG_GIT_REPO -maxdepth 1 -mindepth 1 -name '.*'`
 do
 	if [ -e `basename $i` ]
 	then
-		mv $i $i-pre-setup
+		mv `basename $i` `basename $i`-pre-setup
 	fi
 	ln -s $i
 done 
