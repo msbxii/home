@@ -11,6 +11,8 @@ set modelines=0
 set mouse=a
 let mapleader = ","
 
+set tags=./tags,tags,~/.vim/nettags
+
 " General environment things {
 	set backspace=indent,eol,start
 	set encoding=utf-8
@@ -34,8 +36,8 @@ let mapleader = ","
 " }
 
 " Searching {
-	nnoremap / /\v
-	vnoremap / /\v
+"	nnoremap / /\v
+" 	vnoremap / /\v
 	set ignorecase
 	set smartcase
 	set gdefault
@@ -117,9 +119,13 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 	nnoremap <F1> <ESC>
 	vnoremap <F1> <ESC>
 	inoremap jj <ESC>
+	inoremap jk <ESC>
+	nnoremap <F9> :tabp<cr>
+	nnoremap <F10> :tabn<cr>
 	
 	" generate good tags database
 	map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
 	" auto-close preview window from omnicpp
 	autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 	autocmd InsertLeave * if pumvisible() == 0|pclose|endif
@@ -228,3 +234,6 @@ set statusline+=)
 set statusline+=\ (line\ %l\/%L,\ col\ %03c%03V)
 
 " }}}
+"
+"
+set t_Co=256
