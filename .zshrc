@@ -51,6 +51,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/ga
 	alias lla='ls -la'
 	alias svim='sudo vim'
 	alias v='vim'
+	alias remake='make clean all'
 
 	# Git
 	alias gcd='git commit -a -m "updated $(date)"'

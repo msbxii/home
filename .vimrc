@@ -7,6 +7,10 @@ filetype plugin indent on
 set nocompatible
 syntax on
 
+" indentation to 4 spaces
+set sw=4
+set ts=4
+
 set modelines=0
 set mouse=a
 let mapleader = ","
@@ -120,11 +124,21 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 	vnoremap <F1> <ESC>
 	inoremap jj <ESC>
 	inoremap jk <ESC>
+	inoremap <c-c> <esc>
 	nnoremap <F9> :tabp<cr>
 	nnoremap <F10> :tabn<cr>
+	nnoremap <leader>nl i<cr><esc>A<del><esc>
 	
 	" generate good tags database
 	map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+	map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+	function! MakeTags_i()
+		exec ':!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .'
+	endfunc
+
+	command -nargs=0 MakeTags call MakeTags_i()
+
 
 	" auto-close preview window from omnicpp
 	autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
@@ -237,3 +251,4 @@ set statusline+=\ (line\ %l\/%L,\ col\ %03c%03V)
 "
 "
 set t_Co=256
+" set t_Co=4
