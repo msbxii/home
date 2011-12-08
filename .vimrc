@@ -251,4 +251,4 @@ set statusline+=\ (line\ %l\/%L,\ col\ %03c%03V)
 "
 "
 set t_Co=256
-" set t_Co=4
+set t_Co=4
