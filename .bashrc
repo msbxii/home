@@ -138,4 +138,8 @@ case $EUID in
 	;;
 esac
 
+if [ -e ~/bin ]; then
+	PATH=~/bin:$PATH
+fi
+
 # PS1=$PS1"\n$ "
