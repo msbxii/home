@@ -31,6 +31,7 @@ set tags=./tags,tags,~/.vim/nettags
 	set ttyfast
 	set ruler
 	set laststatus=2
+	set number
 	" Vim 7.3 specific options { 
 	if version >= 703
 		set relativenumber
@@ -252,6 +253,7 @@ set statusline+=\ (line\ %l\/%L,\ col\ %03c%03V)
 "
 set t_Co=256
 "set t_Co=4
+
 if filereadable('/home/eric/.vim_local')
 	source /home/eric/.vim_local
 endif
