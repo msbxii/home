@@ -105,7 +105,7 @@ fi
 PATH=~/bin:$PATH:.
 
 FG_BLU='\[\033[1;34m\]'
-FG_GRE='\[\033[1;31m\]'
+FG_GRE='\[\033[1;32m\]'
 FG_RED='\[\033[1;31m\]'
 FG_MAG='\[\033[1;35m\]'
 FG_YEL='\[\033[1;33m\]'
@@ -115,7 +115,7 @@ COLOR_RESET='\[\033[m\]'
 
 git_prompt_info() {
 	FG_BLU='\033[1;34m'
-	FG_GRE='\033[1;31m'
+	FG_GRE='\033[1;32m'
 	FG_RED='\033[1;31m'
 	FG_MAG='\033[1;35m'
 	FG_YEL='\033[1;33m'
