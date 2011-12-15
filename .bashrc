@@ -124,7 +124,7 @@ git_prompt_info() {
 	then
 		BRANCH=`git branch | grep -o '[a-zA-Z0-9_]*'`
 		DIRTY=`git status |wc -l`
-		if [ "$DIRTY" != "2" ]; then
+		if [ "$DIRTY" -gt "4" ]; then
 			echo -ne " on ${FG_YEL}${BRANCH}! (dirty)"
 		else
 			echo -ne " on ${FG_CYA}${BRANCH} (clean)"
@@ -134,13 +134,26 @@ git_prompt_info() {
 	fi
 }
 
+prompt_char() {
+	git branch > /dev/null 2> /dev/null && echo '±' && return
+	hg root > /dev/null 2> /dev/null && echo '☿' && return
+	case $EUID in
+		0)
+			echo '#' && return
+			;;
+		*)
+			echo '$' && return
+			;;
+	esac
+}
+
 PS1='\n'${FG_BLU}'\u '${COLOR_RESET}'at '${FG_GRE}'\h'${COLOR_RESET}' in '${FG_MAG}'\w'${COLOR_RESET}'$(git_prompt_info)'${COLOR_RESET}
 case $EUID in
 	0)
-	PS1=$PS1'\n'${FG_RED}'# '${COLOR_RESET}
+		PS1=$PS1'\n'${FG_RED}'$(prompt_char) '${COLOR_RESET}
 	;;
 	*)
-	PS1=$PS1'\n'${FG_CYA}'$ '${COLOR_RESET}
+		PS1=$PS1'\n'${FG_CYA}'$(prompt_char) '${COLOR_RESET}
 	;;
 esac
 
