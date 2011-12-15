@@ -102,7 +102,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-PATH=$PATH:.
+PATH=~/bin:$PATH:.
 
 FG_BLU='\[\033[1;34m\]'
 FG_GRE='\[\033[1;31m\]'
