@@ -39,6 +39,11 @@ set tags=./tags,tags,~/.vim/nettags
 	endif
 	" }
 " }
+" Filetype commands {
+
+	au BufNewFile,BufRead *.tex,*.txt,*.md setlocal spell 
+
+" }
 
 " Searching {
 "	nnoremap / /\v
