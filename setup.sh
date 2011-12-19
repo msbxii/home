@@ -34,7 +34,7 @@ __want() {
 if [ "$1" = vim ]; then
 	read -p 'fetch/compile/install vim? [y/n]: ' ANS
 	if [ "$ANS" = y ]; then
-		__need hg
+		__need mercurial
 		cd
 		if [ ! -d sources ]; then
 			mkdir sources

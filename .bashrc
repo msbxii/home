@@ -102,10 +102,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-PATH=$PATH:.
+PATH=~/bin:$PATH:.
 
 FG_BLU='\[\033[1;34m\]'
-FG_GRE='\[\033[1;31m\]'
+FG_GRE='\[\033[1;32m\]'
 FG_RED='\[\033[1;31m\]'
 FG_MAG='\[\033[1;35m\]'
 FG_YEL='\[\033[1;33m\]'
@@ -115,7 +115,7 @@ COLOR_RESET='\[\033[m\]'
 
 git_prompt_info() {
 	FG_BLU='\033[1;34m'
-	FG_GRE='\033[1;31m'
+	FG_GRE='\033[1;32m'
 	FG_RED='\033[1;31m'
 	FG_MAG='\033[1;35m'
 	FG_YEL='\033[1;33m'
@@ -124,7 +124,7 @@ git_prompt_info() {
 	then
 		BRANCH=`git branch | grep -o '[a-zA-Z0-9_]*'`
 		DIRTY=`git status |wc -l`
-		if [ "$DIRTY" != "2" ]; then
+		if [ "$DIRTY" -gt "4" ]; then
 			echo -ne " on ${FG_YEL}${BRANCH}! (dirty)"
 		else
 			echo -ne " on ${FG_CYA}${BRANCH} (clean)"
@@ -134,13 +134,26 @@ git_prompt_info() {
 	fi
 }
 
+prompt_char() {
+	git branch > /dev/null 2> /dev/null && echo '±' && return
+	hg root > /dev/null 2> /dev/null && echo '☿' && return
+	case $EUID in
+		0)
+			echo '#' && return
+			;;
+		*)
+			echo '$' && return
+			;;
+	esac
+}
+
 PS1='\n'${FG_BLU}'\u '${COLOR_RESET}'at '${FG_GRE}'\h'${COLOR_RESET}' in '${FG_MAG}'\w'${COLOR_RESET}'$(git_prompt_info)'${COLOR_RESET}
 case $EUID in
 	0)
-	PS1=$PS1'\n'${FG_RED}'# '${COLOR_RESET}
+		PS1=$PS1'\n'${FG_RED}'$(prompt_char) '${COLOR_RESET}
 	;;
 	*)
-	PS1=$PS1'\n'${FG_CYA}'$ '${COLOR_RESET}
+		PS1=$PS1'\n'${FG_CYA}'$(prompt_char) '${COLOR_RESET}
 	;;
 esac
 

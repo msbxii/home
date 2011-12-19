@@ -45,7 +45,8 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 # vim style key bindings! my life is complete!
-bindkey -v
+# bindkey -v
 # bindkey -rpM viins '\e'
+# on second though it gets really annoying. They're vi-style
 
 # vim: set filetype=sh :

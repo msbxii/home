@@ -39,6 +39,11 @@ set tags=./tags,tags,~/.vim/nettags
 	endif
 	" }
 " }
+" Filetype commands {
+
+	au BufNewFile,BufRead *.tex,*.txt,*.md setlocal spell 
+
+" }
 
 " Searching {
 "	nnoremap / /\v
@@ -253,3 +258,7 @@ set statusline+=\ (line\ %l\/%L,\ col\ %03c%03V)
 "
 set t_Co=256
 "set t_Co=4
+
+if filereadable('/home/eric/.vim_local')
+	source /home/eric/.vim_local
+endif
