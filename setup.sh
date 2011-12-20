@@ -35,7 +35,7 @@ __want() {
 if [ "$1" = vim ]; then
 	read -p 'fetch/compile/install vim? [y/n]: ' ANS
 	if [ "$ANS" = y ]; then
-		__need hg
+		__need mercurial
 		cd
 		if [ ! -d sources ]; then
 			mkdir sources
@@ -71,19 +71,9 @@ CONFIG_GIT_REPO=.home_config_repo
 ############################
 # grab stuff from the repo #
 ############################
-git clone git://github.com/msbxii/home.git $CONFIG_GIT_REPO
+git clone --recursive git://github.com/msbxii/home.git $CONFIG_GIT_REPO
 
 echo "Home config repository initialized in $CONFIG_GIT_REPO."
-
-read -p 'Would you like to add a remote push for the home repository? [y/n] ' RESP
-
-if [ "$RESP" = "y" ] || [ x"$RESP" = x ]; then
-	( cd $CONFIG_GIT_REPO
-	git remote rm origin
-	git remote add origin https://msbxii@github.com/msbxii/home.git
-	echo 'There you go.'
-	)
-fi
 
 echo 'Making symlinks'
 #############################
@@ -94,10 +84,11 @@ for i in `find $CONFIG_GIT_REPO -maxdepth 1 -mindepth 1 -name '.*'`
 do
 	if [ -e `basename $i` ]
 	then
-		mv $i $i-pre-setup
+		mv `basename $i` `basename $i`-pre-setup
 	fi
 	ln -s $i
 done 
 # }}
 
-rm .git
+rm .git* -f
+ln -s $CONFIG_GIT_REPO/.gitconfig
