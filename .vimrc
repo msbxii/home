@@ -207,7 +207,9 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 "augroup END
 
 set statusline=%f    " Path.
+set statusline+=%#redbar#
 set statusline+=%m   " Modified flag.
+set statusline+=%*
 set statusline+=%r   " Readonly flag.
 set statusline+=%w   " Preview window flag.
 
