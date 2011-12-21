@@ -1,6 +1,8 @@
 #!/bin/bash
 
+HCRDEF=.home_config_repo
 
+[ -z "HOME_CONFIG_REPO" ] && HOME_CONFIG_REPO=$HCRDEF
 
 progs_to_install=( git )
 progs_to_maybe_install=( boxes zsh )
@@ -67,20 +69,19 @@ done
 
 cd
 
-CONFIG_GIT_REPO=.home_config_repo
 ############################
 # grab stuff from the repo #
 ############################
-git clone --recursive git://github.com/msbxii/home.git $CONFIG_GIT_REPO
+git clone --recursive git://github.com/msbxii/home.git $HOME_CONFIG_REPO
 
-echo "Home config repository initialized in $CONFIG_GIT_REPO."
+echo "Home config repository initialized in $HOME_CONFIG_REPO."
 
 echo 'Making symlinks'
 #############################
 # make symlinks to dotfiles #
 #############################
 #{{
-for i in `find $CONFIG_GIT_REPO -maxdepth 1 -mindepth 1 -name '.*'`
+for i in `find $HOME_CONFIG_REPO -maxdepth 1 -mindepth 1 -name '.*'`
 do
 	if [ -e `basename $i` ]
 	then
@@ -91,4 +92,4 @@ done
 # }}
 
 rm .git* -f
-ln -s $CONFIG_GIT_REPO/.gitconfig
+ln -s $HOME_CONFIG_REPO/.gitconfig
