@@ -40,7 +40,8 @@ copy & paste:
 
     wget -O - http://git.io/mhsetup | bash
 
-*warning: dangerous*
+__warning: dangerous.  look through the script before you run it to make sure it's not 
+    going to break something on your machine.  Works best on fresh installs.__
 
 The install script requires `git`, and attempts to automatically install it if not found.
 
