@@ -47,6 +47,9 @@ The install script requires `git`, and attempts to automatically install it if n
 
 A git repository will be created in `~/$HOME_CONFIG_REPO`, which defaults to .home_config_repo
 in the script, but will use an existing value if you happen to set it before running the script.
+You can set this location with
+
+	export HOME_CONFIG_REPO=path/to/foo
 
 The script then symlinks all the dotfiles in that repository into your home
 directory. If you have existing config files, this operation will fail until
