@@ -134,6 +134,9 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 	nnoremap <F9> :tabp<cr>
 	nnoremap <F10> :tabn<cr>
 	nnoremap <leader>nl i<cr><esc>A<del><esc>
+
+	" space starts insert of a single char
+	nnoremap <space> i_<esc>r
 	
 	" generate good tags database
 	map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
