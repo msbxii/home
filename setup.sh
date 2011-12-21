@@ -2,7 +2,7 @@
 
 HCRDEF=.home_config_repo
 
-[ -z "HOME_CONFIG_REPO" ] && HOME_CONFIG_REPO=$HCRDEF
+[ -z "$HOME_CONFIG_REPO" ] && HOME_CONFIG_REPO=$HCRDEF
 
 progs_to_install=( git )
 progs_to_maybe_install=( boxes zsh )
