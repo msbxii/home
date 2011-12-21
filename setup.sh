@@ -26,6 +26,7 @@ __need() {
 	hash "$1" > /dev/null 2>/dev/null && echo "$1 is installed... " && return
 	__n_install "$1"
 }
+
 __want() {
 	hash "$1" > /dev/null 2>/dev/null && echo "$1 is installed"  && return
 	__w_install "$1"

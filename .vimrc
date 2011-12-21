@@ -39,13 +39,18 @@ set tags=./tags,tags,~/.vim/nettags
 	endif
 	" }
 " }
+" Filetype commands {
+
+	au BufNewFile,BufRead *.tex,*.txt,*.md setlocal spell 
+
+" }
 
 " Searching {
 "	nnoremap / /\v
 " 	vnoremap / /\v
 	set ignorecase
 	set smartcase
-	set gdefault
+	" set gdefault
 	set incsearch
 	set showmatch
 	set hlsearch
@@ -228,7 +233,9 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 "augroup END
 
 set statusline=%f    " Path.
+set statusline+=%#redbar#
 set statusline+=%m   " Modified flag.
+set statusline+=%*
 set statusline+=%r   " Readonly flag.
 set statusline+=%w   " Preview window flag.
 
