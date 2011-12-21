@@ -50,7 +50,7 @@ set tags=./tags,tags,~/.vim/nettags
 " 	vnoremap / /\v
 	set ignorecase
 	set smartcase
-	set gdefault
+	" set gdefault
 	set incsearch
 	set showmatch
 	set hlsearch
