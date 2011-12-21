@@ -2,8 +2,8 @@
 
 
 
-progs_to_install=( git zsh )
-progs_to_maybe_install=( boxes )
+progs_to_install=( git )
+progs_to_maybe_install=( boxes zsh )
 
 __w_install() {
 	hash 'apt-get' && echo 'I need administrator priveliges to install '\

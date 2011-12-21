@@ -17,10 +17,10 @@ hand-install
 
 run these commands in your home directory.
     
-	git clone git://github.com/msbxii/home.git .home_config 
-	# change .home_config to whatever you want
+	# .home_config can be anything in this example, just remember what you use
+	git clone --recursive git://github.com/msbxii/home.git .home_config 
 
-	# take whatever you want from that file. ex if you want my 
+	# take whatever you want from that directory. ex if you want my 
 	# vim config in entirety (plugins, etc)
 	cd ~ 
 	ln -s .home_config/.vimrc
