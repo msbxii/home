@@ -85,7 +85,7 @@ for i in `find $HOME_CONFIG_REPO -maxdepth 1 -mindepth 1 -name '.*'`
 do
 	if [ -e `basename $i` ]
 	then
-		mv `basename $i` `basename $i`-pre-setup
+		mv `basename $i` .pre-setup.`basename $i`
 	fi
 	ln -s $i
 done 
