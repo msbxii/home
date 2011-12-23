@@ -27,8 +27,13 @@ set tags=./tags,tags,~/.vim/nettags
 	set wildmenu
 	set showcmd
 	set visualbell
+	" not sure how I feel about this one...
 	" set cursorline
+	
+	" If you're in a good terminal this is nice
 	set ttyfast
+
+	" needs ruler for sure
 	set ruler
 	set laststatus=2
 	set number
@@ -46,14 +51,15 @@ set tags=./tags,tags,~/.vim/nettags
 " }
 
 " Searching {
-"	nnoremap / /\v
+"	nnoremap / /\v " These get annoying
 " 	vnoremap / /\v
 	set ignorecase
 	set smartcase
-	" set gdefault
+	" set gdefault "suuuper annoying, turns off /g flag
 	set incsearch
 	set showmatch
 	set hlsearch
+	" get rid of highlighted crap on screen
 	nnoremap <leader><space> :noh<cr>
 	" nnoremap <tab> %
 	vnoremap <tab> %
@@ -111,13 +117,16 @@ set tags=./tags,tags,~/.vim/nettags
 " }
 
 " Convenience {
+	" who uses semicolon? 
 	nnoremap ; :
+	" move the screen without moving cursor
 	nnoremap <C-e> 5<C-e>
 	nnoremap <C-y> 5<C-y>
 	" [w]rite
 	nnoremap <leader>w :w<cr>
 	" [q]uit
 	nnoremap <leader>q ZZ
+	" jump to beginning/end of line while editing (emacs binding)
 	inoremap <c-a> <esc>I
 	inoremap <c-e> <esc>A
 " }
@@ -125,20 +134,32 @@ set tags=./tags,tags,~/.vim/nettags
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Custom remaps {
+	" don't need F1, probably just reaching for esc
 	inoremap <F1> <ESC>
 	nnoremap <F1> <ESC>
 	vnoremap <F1> <ESC>
-	inoremap jj <ESC>
-	inoremap jk <ESC>
+	" get out of insert mode faster
+	inoremap jj <esc>
+	inoremap jk <esc>
+	inoremap kj <esc>
 	inoremap <c-c> <esc>
+	inoremap <leader><leader> <esc>
+
+	" move between tabs
 	nnoremap <F9> :tabp<cr>
 	nnoremap <F10> :tabn<cr>
+
+	" del from cursor and append to next line with 
+	" indentation. useful in commenting C, or breaking
+	" up function definitions
 	nnoremap <leader>nl i<cr><esc>A<del><esc>
 	
 	" generate good tags database
 	map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 	map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
+	" in case the function keys are unavailable,
+	" typing :MakeTags will gen a tags database
 	function! MakeTags_i()
 		exec ':!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .'
 	endfunc
@@ -152,10 +173,12 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 
 	" Movement {
+		" Navigate windows with ctrl
 		nnoremap <C-h> <C-w><C-h>
 		nnoremap <C-j> <C-w><C-j>
 		nnoremap <C-k> <C-w><C-k>
 		nnoremap <C-l> <C-w><C-l>
+		" carat is too far away for me
 		nnoremap H ^
 
 	" }
@@ -174,7 +197,6 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 	" Damn this mapping is legit. Clobbers mark `m' though
 	nnoremap <leader>bc yy{pv$r*r/mm}Pv$r*$r/k^<c-v>`mjI*<space><esc>
 
-	inoremap <leader><leader> <esc>
 " }
 
 " Tagbar {
@@ -182,6 +204,8 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 " }
 
 " Session saving {
+	" type SQ to make a session and exit. Saves window
+	" and tab states
 	nmap SQ <ESC>:mksession! .vimsession<CR>:wqa<CR>
 	func! RestoreSession()
 		if filereadable('.vimsession')
@@ -196,6 +220,10 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 " }
 
 " Boxes {
+	" Makebox will try to use the proper box type for the
+	" current file.  Can be much smarter than it is at the
+	" moment but I don't really work on any other file types
+	" right now. Defaults to shell ('#') comments
 	func! Makebox(line1, line2, override)
 		let design = 'shell'
 		if a:override != ''
@@ -211,13 +239,16 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 		
 	command -range -nargs=0 Box  call Makebox(<line1>, <line2>, '')
 	command -range -nargs=0 SexyBox call Makebox(<line1>, <line2>, 'peek')
+	" mappings for boxes
 	vnoremap <leader>b :Box<cr>
 	vnoremap <leader>sexy :SexyBox<cr>
 " }
 
 
 " I suck at typing {{
+	" don't need man lookups when I'm in visual mode
 	vnoremap K k
+	" don't need whatever the stupid J mapping is in visual mode
 	vnoremap J j 
 " }}
 
@@ -261,6 +292,12 @@ set statusline+=\ (line\ %l\/%L,\ col\ %03c%03V)
 set t_Co=256
 "set t_Co=4
 
-if filereadable('/home/eric/.vim_local')
-	source /home/eric/.vim_local
+" take local config definitions. Use on low power
+" machines to override some of the more liberally used
+" things (set t_Co=4 is a good one). Put this stuff in
+" ~/.vim_local
+let $VIMLOC=expand("~")."/.vim_local"
+
+if filereadable($VIMLOC)
+	source $VIMLOC
 endif

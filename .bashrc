@@ -157,4 +157,6 @@ case $EUID in
 	;;
 esac
 
+EDITOR=vim
+
 # PS1=$PS1"\n$ "
