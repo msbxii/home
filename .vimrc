@@ -153,6 +153,9 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 	" indentation. useful in commenting C, or breaking
 	" up function definitions
 	nnoremap <leader>nl i<cr><esc>A<del><esc>
+
+	" space starts insert of a single char
+	nnoremap <space> i_<esc>r
 	
 	" generate good tags database
 	map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
