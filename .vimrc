@@ -166,7 +166,6 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 	function! MakeTags_i()
 		exec ':!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .'
 	endfunc
-
 	command -nargs=0 MakeTags call MakeTags_i()
 
 
