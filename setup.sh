@@ -54,15 +54,16 @@ if [ "$1" = vim ]; then
 	exit
 fi
 
-for i in "${progs_to_install[@]}"
-do
-	__need $i
-done
-for i in "${progs_to_maybe_install[@]}"
-do
-	__want $i
-done
+#for i in "${progs_to_install[@]}"
+#do
+	#__need $i
+#done
+#for i in "${progs_to_maybe_install[@]}"
+#do
+	#__want $i
+#done
           
+echo Assuming you have git, bash, vim installed
 
 cd
 
