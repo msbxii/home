@@ -82,8 +82,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias lla='ls -la'
-alias calen='~/calendar/calendar'
-alias todo='~/todo/todo'
 alias truecryptu='truecrypt --fs-options="uid=1000,gid=1000,umask=0002"'
 
 # Alias definitions.
@@ -102,6 +100,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+############################
+# Below is real good stuff #
+############################
+
 PATH=~/bin:$PATH:.
 
 FG_BLU='\[\033[1;34m\]'
@@ -114,17 +116,17 @@ FG_CYA='\[\033[1;36m\]'
 COLOR_RESET='\[\033[m\]'
 
 git_prompt_info() {
-	FG_BLU='\033[1;34m'
+	FG_BLU='\033[1;34m' #override the other colors, since the \[\] prints in $PS1
 	FG_GRE='\033[1;32m'
 	FG_RED='\033[1;31m'
 	FG_MAG='\033[1;35m'
 	FG_YEL='\033[1;33m'
 	FG_CYA='\033[1;36m'
-	if git branch 2>/dev/null > /dev/null
+	if git branch 2>/dev/null > /dev/null && git status 2>/dev/null >/dev/null
 	then
-		BRANCH=`git branch | grep -o '[a-zA-Z0-9_]*'`
-		DIRTY=`git status |wc -l`
-		if [ "$DIRTY" -gt "4" ]; then
+		BRANCH=`git branch | grep '^*' | grep -o '[a-zA-Z0-9_]*'`
+		DIRTY=`git status |wc -l` # Count lines as an indication of dirtiness.. 
+		if [ "$DIRTY" -gt "4" ]; then    # it's a hack, ugly, but it works.
 			echo -ne " on ${FG_YEL}${BRANCH}! (dirty)"
 		else
 			echo -ne " on ${FG_CYA}${BRANCH} (clean)"
@@ -164,5 +166,6 @@ tvim()
 	command vim "$@"
 	stty "$STTYOPTS"
 }
+EDITOR=vim
 
 # PS1=$PS1"\n$ "
