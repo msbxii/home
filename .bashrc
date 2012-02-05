@@ -157,4 +157,12 @@ case $EUID in
 	;;
 esac
 
+tvim()
+{
+	local STTYOPTS="$(stty --save)"
+	stty stop '' -ixoff
+	command vim "$@"
+	stty "$STTYOPTS"
+}
+
 # PS1=$PS1"\n$ "
