@@ -154,6 +154,7 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 	" up function definitions
 	nnoremap <leader>nl i<cr><esc>A<del><esc>
 
+	inoremap <leader>theta Θ
 	" space starts insert of a single char
 	nnoremap <space> i_<esc>r
 	

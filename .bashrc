@@ -159,6 +159,17 @@ case $EUID in
 	;;
 esac
 
+if [ -e ~/bin ]; then
+	PATH=~/bin:$PATH
+fi
+
+tvim()
+{
+	local STTYOPTS="$(stty --save)"
+	stty stop '' -ixoff
+	command vim "$@"
+	stty "$STTYOPTS"
+}
 EDITOR=vim
 
 # PS1=$PS1"\n$ "
