@@ -125,7 +125,7 @@ git_prompt_info() {
 	FG_CYA='\033[1;36m'
 	if git branch 2>/dev/null > /dev/null && git status 2>/dev/null >/dev/null
 	then
-		BRANCH=`git branch | grep '^*' | grep -o '[a-zA-Z0-9_]*'`
+		BRANCH=`git branch | grep '^*' | grep -o '[a-zA-Z0-9_-]*'`
 		DIRTY=`git status |wc -l` # Count lines as an indication of dirtiness.. 
 		if [ "$DIRTY" -gt "4" ]; then    # it's a hack, ugly, but it works.
 			echo -ne " on ${FG_YEL}${BRANCH}! (dirty)"
@@ -159,6 +159,10 @@ case $EUID in
 		PS1=$PS1'\n'${FG_CYA}'$(prompt_char) '${COLOR_RESET}
 	;;
 esac
+
+if [ -e ~/bin ]; then
+	PATH=~/bin:$PATH
+fi
 
 tvim()
 {

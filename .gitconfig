@@ -8,6 +8,8 @@
 	au = add -u
 	co = checkout
 	ca = commit -am
+	graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+	stats = log --graph --stat --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\n\" --all --date=short
 
 [core]
 	editor =vim
