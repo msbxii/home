@@ -172,4 +172,16 @@ tvim()
 }
 EDITOR=vim
 
+metar()
+{
+	date --utc
+	for loc in "$@"
+	do
+		wget -O - ftp://tgftp.nws.noaa.gov/data/observations/metar/stations/${loc^^}.TXT 2>/dev/null
+	done
+}
+
+alias bkl='metar kbkl'
+alias weather='metar kbkl kcle kcgf'
+
 # PS1=$PS1"\n$ "
