@@ -83,6 +83,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias lla='ls -la'
 alias truecryptu='truecrypt --fs-options="uid=1000,gid=1000,umask=0002"'
+alias iptablesv='iptables -L -n --line-numbers'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -183,5 +184,13 @@ metar()
 
 alias bkl='metar kbkl'
 alias weather='metar kbkl kcle kcgf'
+blacklist()
+{
+	iptables -A BLACKLIST -s $1 -j DROP
+}
+pblacklist()
+{
+	iptables -A BLACKLIST -p tcp --dport $2 -s $1 -j DROP
+}
 
 # PS1=$PS1"\n$ "

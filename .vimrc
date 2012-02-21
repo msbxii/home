@@ -304,3 +304,8 @@ let $VIMLOC=expand("~")."/.vim_local"
 if filereadable($VIMLOC)
 	source $VIMLOC
 endif
+
+
+"powerline {
+" let g:Powerline_symbols = 'fancy'
+"}
