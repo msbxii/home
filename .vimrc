@@ -17,6 +17,7 @@ let mapleader = ","
 
 set tags=./tags,tags,~/.vim/nettags
 
+
 " General environment things {
 	set backspace=indent,eol,start
 	set encoding=utf-8
@@ -129,6 +130,8 @@ set tags=./tags,tags,~/.vim/nettags
 	" jump to beginning/end of line while editing (emacs binding)
 	inoremap <c-a> <esc>I
 	inoremap <c-e> <esc>A
+	" need a whildignore
+	set wildignore=*.swp,*.bak,*~,*.o,*.obj,*.exe,*.pyc,*.jpg
 " }
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
