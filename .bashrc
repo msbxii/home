@@ -178,7 +178,8 @@ metar()
 	date --utc
 	for loc in "$@"
 	do
-		wget -O - ftp://tgftp.nws.noaa.gov/data/observations/metar/stations/${loc^^}.TXT 2>/dev/null
+		echo
+		curl ftp://tgftp.nws.noaa.gov/data/observations/metar/stations/${loc^^}.TXT 2>/dev/null
 	done
 }
 
