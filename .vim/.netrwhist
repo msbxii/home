@@ -1,7 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/eric'
 let g:netrw_dirhist_2='/home/eric/.git'
 let g:netrw_dirhist_3='/home/eric/.home_config_repo/.vim/bundle/rainbow_parentheses/autoload'
 let g:netrw_dirhist_4='/var/www/liftoff_1220/index.html'
 let g:netrw_dirhist_5='/home/eric/.byobu'
+let g:netrw_dirhist_6='/shr/ddrp-2/stats/rfe'
+let g:netrw_dirhist_7='/usr/share/doc/davfs2'
+let g:netrw_dirhist_8='/home/eric'
+let g:netrw_dirhist_9='/home/eric/old/hgtest'

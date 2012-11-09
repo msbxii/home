@@ -84,10 +84,14 @@ EXEC 01;32
 ##### USER 
 
 
+# Compiled
 .o 00;35
+.class 00;35
+# Source
 .cpp 00;33
 .c 00;33
 .h 00;33
+.java 00;33
 
 
 #########
