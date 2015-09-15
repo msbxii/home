@@ -7,6 +7,7 @@ filetype plugin indent on
 set nocompatible
 syntax on
 
+" test modification
 " indentation to 4 spaces
 set sw=4
 set ts=4
