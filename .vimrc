@@ -314,12 +314,10 @@ set statusline+=\ (line\ %l\/%L,\ col\ %03c%03V)
 " }}}
 "
 "
-set t_Co=256
-"set t_Co=4
 
 " take local config definitions. Use on low power
 " machines to override some of the more liberally used
-" things (set t_Co=4 is a good one). Put this stuff in
+" things (set t_Co=8 is a good one). Put this stuff in
 " ~/.vim_local
 let $VIMLOC=expand("~")."/.vim_local"
 
@@ -339,8 +337,9 @@ au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
 "set listchars=tab:>.,trail:·
-set listchars=tab:»\ ,trail:·
+"set listchars=tab:»\ ,trail:·
 "set listchars=tab:▸\ ,trail:·
+set listchars=tab:\ \ ,trail:·
 set list
 
 autocmd Filetype java setlocal list
