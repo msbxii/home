@@ -156,7 +156,7 @@ title_change() {
     echo -ne '\007\]'
 }
 
-PS1=$(title_change)'\n'${FG_BLU}'\u '${COLOR_RESET}'at '${FG_GRE}'\h'${COLOR_RESET}' in '${FG_MAG}'\w'${COLOR_RESET}'$(git_prompt_info)'${COLOR_RESET}
+PS1=$(title_change)'\n'${FG_BLU}'[\u]'${COLOR_RESET}' '${FG_GRE}'\h'${COLOR_RESET}':'${FG_MAG}'\w'${COLOR_RESET}'$(git_prompt_info)'${COLOR_RESET}
 case $EUID in
 	0)
 		PS1=$PS1'\n'${FG_RED}'$(prompt_char) '${COLOR_RESET}
