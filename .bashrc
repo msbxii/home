@@ -200,4 +200,5 @@ pblacklist()
 	iptables -A BLACKLIST -p tcp --dport $2 -s $1 -j DROP
 }
 
+export SUDO_EDITOR='vim:nano'
 # PS1=$PS1"\n$ "
