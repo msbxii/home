@@ -17,7 +17,7 @@ nnoremap <Tab> >>
 nnoremap <S-Tab> <<
 
 
-set modelines=0
+set modelines=1
 set mouse=a
 let mapleader = ","
 
@@ -339,8 +339,8 @@ au BufWinEnter * silent! loadview
 
 "set listchars=tab:>.,trail:·
 "set listchars=tab:»\ ,trail:·
-"set listchars=tab:▸\ ,trail:·
-set listchars=tab:\ \ ,trail:·
+set listchars=tab:▸\ ,trail:·
+"set listchars=tab:\ \ ,trail:·
 set list
 
 autocmd Filetype java setlocal list

@@ -200,4 +200,6 @@ pblacklist()
 	iptables -A BLACKLIST -p tcp --dport $2 -s $1 -j DROP
 }
 
+export TERM=xterm-256color
+alias 1tmux='tmux new -A -s eric'
 # PS1=$PS1"\n$ "
