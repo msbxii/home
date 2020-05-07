@@ -38,7 +38,7 @@ auto-install
 
 copy & paste:
 
-    wget -O - http://git.io/mhsetup | bash
+    wget -O - https://raw.githubusercontent.com/msbxii/home/master/setup.sh | bash
 
 __warning: dangerous.  look through the script before you run it to make sure it's not 
     going to break something on your machine.  Works best on fresh installs.__
