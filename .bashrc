@@ -202,4 +202,5 @@ pblacklist()
 
 export TERM=xterm-256color
 alias 1tmux='tmux new -A -s eric'
+export SUDO_EDITOR='vim:nano'
 # PS1=$PS1"\n$ "
